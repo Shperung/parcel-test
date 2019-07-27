@@ -25863,7 +25863,13 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return React.createElement("h1", null, "App");
+      return React.createElement("section", null, React.createElement("div", null, React.createElement("img", {
+        srcSet: "https://cdn.auth0.com/blog/react-js/react.png 1x, https://cdn.pixabay.com/photo/2016/07/03/11/00/atomic-symbol-1494506_960_720.png 2x",
+        src: "https://cdn.auth0.com/blog/react-js/react.png",
+        alt: "React",
+        height: "200",
+        width: "200"
+      })));
     }
   }]);
 
@@ -25901,7 +25907,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53199" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58604" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

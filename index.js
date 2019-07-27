@@ -6,7 +6,17 @@ import "./scss/style.scss";
 class App extends React.Component {
     render() {
         return (
-            <h1>App</h1>
+            <section>
+                <div>
+                    <img
+                        srcSet="https://cdn.auth0.com/blog/react-js/react.png 1x, https://cdn.pixabay.com/photo/2016/07/03/11/00/atomic-symbol-1494506_960_720.png 2x"
+                        src="https://cdn.auth0.com/blog/react-js/react.png"
+                        alt="React"
+                        height="200"
+                        width="200"
+                    />
+                </div>
+            </section>
         )
     }
 }
