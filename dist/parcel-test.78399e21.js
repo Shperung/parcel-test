@@ -30681,7 +30681,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
 "use strict";
 
 var React = _interopRequireWildcard(require("react"));
@@ -30701,12 +30701,7 @@ var imgA = React.createElement("img", {
 });
 
 var App = function App() {
-  return React.createElement("section", null, React.createElement("div", {
-    //className="absolute-centered"
-    //className="flex-centered"
-    //className="flex-centered-margin"
-    className: "centered-table-cell"
-  }, React.createElement("figure", null, imgA)));
+  return React.createElement("section", null, React.createElement("h1", null, "test"), React.createElement("div", null, React.createElement("figure", null, imgA)));
 };
 
 console.log('test');
@@ -30740,7 +30735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53008" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53533" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -30915,5 +30910,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/parcel-test.e31bb0bc.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
+//# sourceMappingURL=/parcel-test.78399e21.js.map
