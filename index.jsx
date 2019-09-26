@@ -2,6 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import "./scss/style.scss";
+import cancel from './src/icon/assets/cancel.svg';
+import arrow from './src/icon/assets/arrow-point-to-right.svg';
 
 const imgA = (
     <img
@@ -13,10 +15,19 @@ const imgA = (
     />
 );
 
+console.log('cancel', cancel)
+
 const App = () => {
     return (
         <section>
             <h1>test</h1>
+            <h2>test</h2>
+            <svg width="25" height="25">
+              <use xlinkHref={cancel} />
+            </svg>
+            <svg>
+              <use xlinkHref={arrow} />
+            </svg>
             <div
              //className="absolute-centered"
              //className="flex-centered"
