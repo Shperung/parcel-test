@@ -1,9 +1,20 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
+import { Provider } from 'react-redux';
+
+import store from './store.js';
+
+import IndexScreen from './components/index/index.screen.jsx';
+import ArtistsScreen from './components/artists/artists.screen.jsx';
+import ArtistScreen from './components/artists/artist.screen.jsx';
 
 import "./scss/style.scss";
-import cancel from './src/icon/assets/cancel.svg';
-import arrow from './src/icon/assets/arrow-point-to-right.svg';
+import cancel from './icon/assets/cancel.svg';
+import arrow from './icon/assets/arrow-point-to-right.svg';
 
 const imgA = (
     <img
@@ -19,6 +30,8 @@ console.log('cancel', cancel)
 
 const App = () => {
     return (
+   
+      <Provider store={store}>
         <section>
             <h1>test</h1>
             <h2>test</h2>
@@ -40,6 +53,14 @@ const App = () => {
                 </figure>
             </div>
         </section>
+        <Router>
+          <React.Fragment>
+            <Route path="/" component={IndexScreen} />
+            <Route path="/artists" component={ArtistsScreen} />            
+            <Route path="/artists/:unique" component={ArtistScreen} />
+          </React.Fragment>
+        </Router>
+      </Provider>
     )
 }
 
