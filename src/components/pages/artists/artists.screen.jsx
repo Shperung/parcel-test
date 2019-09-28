@@ -1,3 +1,4 @@
+// @flow 
 import React, { Component } from 'react';
 import {
   Link,
@@ -6,7 +7,12 @@ import { connect } from 'react-redux';
 
 import { getArtists } from '../../../actions/artists.astion.js';
 
-class ArtistsScreen extends Component {
+type Props = {
+  getArtists: Function,
+  artists: [Object],
+};
+
+class ArtistsScreen extends Component<Props> {
 
   componentDidMount() {
     this.props.getArtists();
@@ -36,10 +42,7 @@ class ArtistsScreen extends Component {
             no data
           </span>
         )
-      }
-      
-      
-        
+      }  
       </div>
     );
   }

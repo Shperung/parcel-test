@@ -1,3 +1,4 @@
+// @flow 
 import React, { Component } from 'react';
 import {
   Link,
@@ -6,8 +7,13 @@ import { connect } from 'react-redux';
 
 import { getArtist } from '../../../actions/artists.astion.js';
 
+type Props = {
+  getArtist: Function,
+  artist: Object,
+  match: Object,
+};
 
-class ArtistScreen extends Component {
+class ArtistScreen extends Component<Props> {
 
     componentDidMount() {
         this.props.getArtist(this.props.match.params.unique);
