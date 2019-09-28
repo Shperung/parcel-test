@@ -7,7 +7,7 @@ import './icons.scss';
 
 const glyphs = {
   cancel,
-  arrowRight,
+  arrowRight
 };
 
 type Props = {
@@ -18,8 +18,8 @@ type Props = {
   blue?: boolean,
   red?: boolean,
   green?: boolean,
-  glyph: string,
-}
+  glyph: string
+};
 
 function Icon(props: Props) {
   const {
@@ -30,7 +30,7 @@ function Icon(props: Props) {
     white = false,
     blue = false,
     red = false,
-    green = false,
+    green = false
   } = props;
 
   let computedClassName = `icon ${className}`;
@@ -40,9 +40,9 @@ function Icon(props: Props) {
   if (green) computedClassName += ' icon--green';
 
   return (
-   <svg className={computedClassName} width={width} height={height}>
-     <use xlinkHref={glyphs[glyph]} />
-   </svg>
+    <svg className={computedClassName} width={width} height={height}>
+      <use xlinkHref={glyphs[glyph]} />
+    </svg>
   );
 }
 
