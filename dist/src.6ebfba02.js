@@ -37292,7 +37292,137 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var store = (0, _redux.createStore)(_defaultReducer.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default)));
 var _default = store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"src/components/pages/index/index.screen.jsx":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/modules/icons/icons.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/svg/assets/cancel.svg":[function(require,module,exports) {
+module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
+},{}],"src/svg/assets/arrow-point-to-right.svg":[function(require,module,exports) {
+module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
+},{}],"src/components/modules/icons/icons.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./icons.scss");
+
+var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
+
+var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var glyphs = {
+  'cancel': _cancel.default,
+  'arrowRight': _arrowPointToRight.default
+};
+
+function Icon(props) {
+  var _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      glyph = props.glyph,
+      width = props.width,
+      height = props.height,
+      white = props.white,
+      blue = props.blue,
+      red = props.red,
+      green = props.green;
+  var computedClassName = "icon ".concat(className);
+  if (white) computedClassName += ' icon--white';
+  if (blue) computedClassName += ' icon--blue';
+  if (red) computedClassName += ' icon--red';
+  if (green) computedClassName += ' icon--green';
+  return _react.default.createElement("svg", {
+    className: computedClassName,
+    width: width,
+    height: height
+  }, _react.default.createElement("use", {
+    xlinkHref: glyphs[glyph]
+  }));
+}
+
+var _default = Icon;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./icons.scss":"src/components/modules/icons/icons.scss","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/pages/index/index.screen.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37304,17 +37434,27 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _icons = _interopRequireDefault(require("../../modules/icons/icons.jsx"));
+
+require("./index.screen.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function IndexScreen() {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "IndexScreen"), _react.default.createElement(_reactRouterDom.Link, {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "IndexScreen"), _react.default.createElement(_icons.default, {
+    glyph: "cancel",
+    width: 40,
+    height: 40,
+    green: true,
+    className: "icon-close"
+  }), _react.default.createElement(_reactRouterDom.Link, {
     to: "/artists"
   }, "artists"));
 }
 
 var _default = IndexScreen;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/config.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37580,83 +37720,12 @@ var mapDispatchToProps = {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ArtistScreen);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/scss/style.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/scss/style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/icon/assets/cancel.svg":[function(require,module,exports) {
-module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
-},{}],"src/icon/assets/arrow-point-to-right.svg":[function(require,module,exports) {
-module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
-},{}],"src/index.jsx":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/index.jsx":[function(require,module,exports) {
 "use strict";
 
 var React = _interopRequireWildcard(require("react"));
@@ -37677,40 +37746,29 @@ var _artistScreen = _interopRequireDefault(require("./components/pages/artists/a
 
 require("./scss/style.scss");
 
-var _cancel = _interopRequireDefault(require("./icon/assets/cancel.svg"));
+var _cancel = _interopRequireDefault(require("./svg/assets/cancel.svg"));
 
-var _arrowPointToRight = _interopRequireDefault(require("./icon/assets/arrow-point-to-right.svg"));
+var _arrowPointToRight = _interopRequireDefault(require("./svg/assets/arrow-point-to-right.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-var imgA = React.createElement("img", {
-  srcSet: "https://cdn.auth0.com/blog/react-js/react.png 1x, https://cdn.pixabay.com/photo/2016/07/03/11/00/atomic-symbol-1494506_960_720.png 2x",
-  src: "https://cdn.auth0.com/blog/react-js/react.png",
-  alt: "React",
-  height: "200",
-  width: "200"
-});
 console.log('cancel', _cancel.default);
 
 var App = function App() {
   return React.createElement(_reactRedux.Provider, {
     store: _store.default
-  }, React.createElement("section", null, React.createElement("h1", null, "test"), React.createElement("h2", null, "test"), React.createElement("svg", {
-    width: "25",
-    height: "25"
-  }, React.createElement("use", {
-    xlinkHref: _cancel.default
-  })), React.createElement("svg", null, React.createElement("use", {
-    xlinkHref: _arrowPointToRight.default
-  })), React.createElement("div", null, React.createElement("figure", null, imgA))), React.createElement(_reactRouterDom.BrowserRouter, null, React.createElement(React.Fragment, null, React.createElement(_reactRouterDom.Route, {
+  }, React.createElement(_reactRouterDom.BrowserRouter, null, React.createElement(React.Fragment, null, React.createElement(_reactRouterDom.Route, {
+    exact: true,
     path: "/",
     component: _indexScreen.default
   }), React.createElement(_reactRouterDom.Route, {
+    exact: true,
     path: "/artists",
     component: _artistsScreen.default
   }), React.createElement(_reactRouterDom.Route, {
+    exact: true,
     path: "/artists/:unique",
     component: _artistScreen.default
   }))));
@@ -37719,7 +37777,7 @@ var App = function App() {
 console.log('test');
 var rootNode = document.getElementById("js--root");
 ReactDOM.render(React.createElement(App, null), rootNode);
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./icon/assets/cancel.svg":"src/icon/assets/cancel.svg","./icon/assets/arrow-point-to-right.svg":"src/icon/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37747,7 +37805,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59025" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60603" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
