@@ -8,9 +8,9 @@ import { Provider } from 'react-redux';
 
 import store from './store.js';
 
-import IndexScreen from './components/index/index.screen.jsx';
-import ArtistsScreen from './components/artists/artists.screen.jsx';
-import ArtistScreen from './components/artists/artist.screen.jsx';
+import IndexScreen from './components/pages/index/index.screen.jsx';
+import ArtistsScreen from './components/pages/artists/artists.screen.jsx';
+import ArtistScreen from './components/pages/artists/artist.screen.jsx';
 
 import "./scss/style.scss";
 import cancel from './icon/assets/cancel.svg';

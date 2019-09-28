@@ -37292,7 +37292,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var store = (0, _redux.createStore)(_defaultReducer.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default)));
 var _default = store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"src/components/index/index.screen.jsx":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"src/components/pages/index/index.screen.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37420,7 +37420,7 @@ var getArtist = function getArtist(unique) {
 };
 
 exports.getArtist = getArtist;
-},{"../config.js":"src/config.js"}],"src/components/artists/artists.screen.jsx":[function(require,module,exports) {
+},{"../config.js":"src/config.js"}],"src/components/pages/artists/artists.screen.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37434,7 +37434,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _reactRedux = require("react-redux");
 
-var _artistsAstion = require("../../actions/artists.astion.js");
+var _artistsAstion = require("../../../actions/artists.astion.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -37503,7 +37503,7 @@ var mapDispatchToProps = {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ArtistsScreen);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/components/artists/artist.screen.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/components/pages/artists/artist.screen.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37517,7 +37517,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _reactRedux = require("react-redux");
 
-var _artistsAstion = require("../../actions/artists.astion.js");
+var _artistsAstion = require("../../../actions/artists.astion.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -37580,7 +37580,7 @@ var mapDispatchToProps = {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ArtistScreen);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -37669,11 +37669,11 @@ var _reactRedux = require("react-redux");
 
 var _store = _interopRequireDefault(require("./store.js"));
 
-var _indexScreen = _interopRequireDefault(require("./components/index/index.screen.jsx"));
+var _indexScreen = _interopRequireDefault(require("./components/pages/index/index.screen.jsx"));
 
-var _artistsScreen = _interopRequireDefault(require("./components/artists/artists.screen.jsx"));
+var _artistsScreen = _interopRequireDefault(require("./components/pages/artists/artists.screen.jsx"));
 
-var _artistScreen = _interopRequireDefault(require("./components/artists/artist.screen.jsx"));
+var _artistScreen = _interopRequireDefault(require("./components/pages/artists/artist.screen.jsx"));
 
 require("./scss/style.scss");
 
@@ -37719,7 +37719,7 @@ var App = function App() {
 console.log('test');
 var rootNode = document.getElementById("js--root");
 ReactDOM.render(React.createElement(App, null), rootNode);
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/index/index.screen.jsx":"src/components/index/index.screen.jsx","./components/artists/artists.screen.jsx":"src/components/artists/artists.screen.jsx","./components/artists/artist.screen.jsx":"src/components/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./icon/assets/cancel.svg":"src/icon/assets/cancel.svg","./icon/assets/arrow-point-to-right.svg":"src/icon/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./icon/assets/cancel.svg":"src/icon/assets/cancel.svg","./icon/assets/arrow-point-to-right.svg":"src/icon/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37747,7 +37747,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52971" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59025" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

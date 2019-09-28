@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const app = express();
 
 const path = require('path');
@@ -9,6 +10,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let db;
 
 const port = process.env.PORT || 3012;
+const db_user = process.env.DB_USER;
+const db_pass = process.env.DB_PASSWORD;
+const db_host = process.env.DB_HOST;
+const db_cluster = process.env.DB_CLUSTER;
 
 /*GET*/
 app.get('/api/artists', (req, res) => {
@@ -76,7 +81,9 @@ app.get('/', function (req, res) {
 
 
 const MongoClient = require('mongodb').MongoClient;
-const mongo_uri = "mongodb+srv://Shperung:vwnqo123qwer@significance-canto-vwnqo.mongodb.net/significanceCantoDB?retryWrites=true"
+const mongo_uri = `mongodb+srv://${db_user}:${db_pass}@${db_host}/${db_cluster}?retryWrites=true`;
+console.log('mongo_uri', mongo_uri);
+
 const client = new MongoClient(mongo_uri, { useNewUrlParser: true });
 client.connect(err => {
    if (err) {

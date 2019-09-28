@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { getArtist } from '../../actions/artists.astion.js';
+import { getArtist } from '../../../actions/artists.astion.js';
 
 
 class ArtistScreen extends Component {
