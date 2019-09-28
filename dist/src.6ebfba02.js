@@ -37387,8 +37387,8 @@ var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arr
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var glyphs = {
-  'cancel': _cancel.default,
-  'arrowRight': _arrowPointToRight.default
+  cancel: _cancel.default,
+  arrowRight: _arrowPointToRight.default
 };
 
 function Icon(props) {
@@ -37446,6 +37446,12 @@ function IndexScreen() {
     width: 40,
     height: 40,
     green: true,
+    className: "icon-close"
+  }), _react.default.createElement(_icons.default, {
+    glyph: "arrowRight",
+    width: 40,
+    height: 40,
+    blue: true,
     className: "icon-close"
   }), _react.default.createElement(_reactRouterDom.Link, {
     to: "/artists"

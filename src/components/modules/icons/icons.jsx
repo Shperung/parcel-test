@@ -5,8 +5,8 @@ import cancel from '../../../svg/assets/cancel.svg';
 import arrowRight from '../../../svg/assets/arrow-point-to-right.svg';
 
 const glyphs = {
-  'cancel' : cancel,
-  'arrowRight' : arrowRight,
+  cancel,
+  arrowRight,
 };
 
 function Icon(props) {
