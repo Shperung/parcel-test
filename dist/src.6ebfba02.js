@@ -37292,7 +37292,58 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var store = (0, _redux.createStore)(_defaultReducer.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default)));
 var _default = store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","redux-devtools-extension":"node_modules/redux-devtools-extension/index.js","./reducers/default-reducer":"src/reducers/default-reducer.js"}],"src/svg/assets/cancel.svg":[function(require,module,exports) {
+module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
+},{}],"src/svg/assets/arrow-point-to-right.svg":[function(require,module,exports) {
+module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
+},{}],"src/components/modules/icons/icons.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
+
+var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var glyphs = {
+  cancel: _cancel.default,
+  arrowRight: _arrowPointToRight.default
+};
+
+function Icon(props) {
+  var _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      glyph = props.glyph,
+      width = props.width,
+      height = props.height,
+      white = props.white,
+      blue = props.blue,
+      red = props.red,
+      green = props.green;
+  var computedClassName = "icon ".concat(className);
+  if (white) computedClassName += ' icon--white';
+  if (blue) computedClassName += ' icon--blue';
+  if (red) computedClassName += ' icon--red';
+  if (green) computedClassName += ' icon--green';
+  return _react.default.createElement("svg", {
+    className: computedClassName,
+    width: width,
+    height: height
+  }, _react.default.createElement("use", {
+    xlinkHref: glyphs[glyph]
+  }));
+}
+
+var _default = Icon;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -37359,65 +37410,7 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/modules/icons/icons.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/svg/assets/cancel.svg":[function(require,module,exports) {
-module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
-},{}],"src/svg/assets/arrow-point-to-right.svg":[function(require,module,exports) {
-module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
-},{}],"src/components/modules/icons/icons.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./icons.scss");
-
-var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
-
-var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var glyphs = {
-  cancel: _cancel.default,
-  arrowRight: _arrowPointToRight.default
-};
-
-function Icon(props) {
-  var _props$className = props.className,
-      className = _props$className === void 0 ? '' : _props$className,
-      glyph = props.glyph,
-      width = props.width,
-      height = props.height,
-      white = props.white,
-      blue = props.blue,
-      red = props.red,
-      green = props.green;
-  var computedClassName = "icon ".concat(className);
-  if (white) computedClassName += ' icon--white';
-  if (blue) computedClassName += ' icon--blue';
-  if (red) computedClassName += ' icon--red';
-  if (green) computedClassName += ' icon--green';
-  return _react.default.createElement("svg", {
-    className: computedClassName,
-    width: width,
-    height: height
-  }, _react.default.createElement("use", {
-    xlinkHref: glyphs[glyph]
-  }));
-}
-
-var _default = Icon;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./icons.scss":"src/components/modules/icons/icons.scss","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

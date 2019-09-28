@@ -1,24 +1,36 @@
+// @flow
 import React from 'react';
 
-import './icons.scss';
 import cancel from '../../../svg/assets/cancel.svg';
 import arrowRight from '../../../svg/assets/arrow-point-to-right.svg';
+import './icons.scss';
 
 const glyphs = {
   cancel,
   arrowRight,
 };
 
-function Icon(props) {
+type Props = {
+  className?: string,
+  width?: number,
+  height?: number,
+  white?: boolean,
+  blue?: boolean,
+  red?: boolean,
+  green?: boolean,
+  glyph: string,
+}
+
+function Icon(props: Props) {
   const {
-    className = '',
     glyph,
-    width,
-    height,
-    white,
-    blue,
-    red,
-    green,
+    className = '',
+    width = 24,
+    height = 24,
+    white = false,
+    blue = false,
+    red = false,
+    green = false,
   } = props;
 
   let computedClassName = `icon ${className}`;

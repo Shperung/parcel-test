@@ -1,3 +1,4 @@
+// @flow 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
@@ -34,8 +35,9 @@ const App = () => {
     )
 }
 
-console.log('test');
 const rootNode = document.getElementById("js--root");
-ReactDOM.render(<App />, rootNode)
+if (rootNode) {
+  ReactDOM.render(<App />, rootNode);
+}
 
 
