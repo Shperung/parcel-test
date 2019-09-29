@@ -1,19 +1,16 @@
-import config from '../config.js';
+// @flow
+import { getData } from './fetchApi';
+import type { Dispatch } from 'redux';
 
-console.log('config', config);
-
-function fetchPosts() {
-  const URL = `${config.fetchPath}/api/artists`;
-  return fetch(URL, { method: 'GET' }).then(response => Promise.all([response, response.json()]));
-}
-
+/* GET artists*/
 export const getArtists = () => {
-  return dispatch => {
+  const URL = '/api/artists';
+  return (dispatch: Dispatch) => {
     dispatch({
       type: 'GET_ARTISTS_START'
     });
-    return fetchPosts().then(([response, data]) => {
-      if (response.status === 200) {
+    return getData(URL).then(([res, data]) => {
+      if (res.status === 200) {
         dispatch({
           type: 'GET_ARTISTS',
           payload: data
@@ -29,19 +26,14 @@ export const getArtists = () => {
 };
 
 /* GET artist*/
-
-function fetchPost(unique) {
-  const URL = `${config.fetchPath}/api/artists/${unique}`;
-  return fetch(URL, { method: 'GET' }).then(response => Promise.all([response, response.json()]));
-}
-
-export const getArtist = unique => {
-  return dispatch => {
+export const getArtist = (unique: string) => {
+  const URL = `/api/artists/${unique}`;
+  return (dispatch: Dispatch) => {
     dispatch({
       type: 'GET_ARTIST_START'
     });
-    return fetchPost(unique).then(([response, data]) => {
-      if (response.status === 200) {
+    return getData(URL).then(([res, data]) => {
+      if (res.status === 200) {
         dispatch({
           type: 'GET_ARTIST',
           payload: data

@@ -37477,7 +37477,30 @@ var _default = {
   fetchPath: "development" === 'development' ? 'http://localhost:3012' : ''
 };
 exports.default = _default;
-},{}],"src/actions/artists.astion.js":[function(require,module,exports) {
+},{}],"src/actions/fetchApi.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getData = void 0;
+
+var _config = _interopRequireDefault(require("../config.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var getData = function getData(url) {
+  var path = "".concat(_config.default.fetchPath).concat(url);
+  console.log('getData path', path);
+  return fetch(path, {
+    method: 'GET'
+  }).then(function (response) {
+    return Promise.all([response, response.json()]);
+  });
+};
+
+exports.getData = getData;
+},{"../config.js":"src/config.js"}],"src/actions/artists.astion.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37485,9 +37508,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getArtist = exports.getArtists = void 0;
 
-var _config = _interopRequireDefault(require("../config.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _fetchApi = require("./fetchApi");
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -37497,28 +37518,19 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-console.log('config', _config.default);
-
-function fetchPosts() {
-  var URL = "".concat(_config.default.fetchPath, "/api/artists");
-  return fetch(URL, {
-    method: 'GET'
-  }).then(function (response) {
-    return Promise.all([response, response.json()]);
-  });
-}
-
+/* GET artists*/
 var getArtists = function getArtists() {
+  var URL = '/api/artists';
   return function (dispatch) {
     dispatch({
       type: 'GET_ARTISTS_START'
     });
-    return fetchPosts().then(function (_ref) {
+    return (0, _fetchApi.getData)(URL).then(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
-          response = _ref2[0],
+          res = _ref2[0],
           data = _ref2[1];
 
-      if (response.status === 200) {
+      if (res.status === 200) {
         dispatch({
           type: 'GET_ARTISTS',
           payload: data
@@ -37537,26 +37549,18 @@ var getArtists = function getArtists() {
 
 exports.getArtists = getArtists;
 
-function fetchPost(unique) {
-  var URL = "".concat(_config.default.fetchPath, "/api/artists/").concat(unique);
-  return fetch(URL, {
-    method: 'GET'
-  }).then(function (response) {
-    return Promise.all([response, response.json()]);
-  });
-}
-
 var getArtist = function getArtist(unique) {
+  var URL = "/api/artists/".concat(unique);
   return function (dispatch) {
     dispatch({
       type: 'GET_ARTIST_START'
     });
-    return fetchPost(unique).then(function (_ref3) {
+    return (0, _fetchApi.getData)(URL).then(function (_ref3) {
       var _ref4 = _slicedToArray(_ref3, 2),
-          response = _ref4[0],
+          res = _ref4[0],
           data = _ref4[1];
 
-      if (response.status === 200) {
+      if (res.status === 200) {
         dispatch({
           type: 'GET_ARTIST',
           payload: data
@@ -37572,7 +37576,7 @@ var getArtist = function getArtist(unique) {
 };
 
 exports.getArtist = getArtist;
-},{"../config.js":"src/config.js"}],"src/components/pages/artists/artists.screen.jsx":[function(require,module,exports) {
+},{"./fetchApi":"src/actions/fetchApi.js"}],"src/components/pages/artists/artists.screen.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
