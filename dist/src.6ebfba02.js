@@ -37423,7 +37423,78 @@ function Icon(props) {
 
 var _default = Icon;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/modal/modal.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./modal.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Modal(props) {
+  var _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      _props$width = props.width,
+      width = _props$width === void 0 ? 450 : _props$width,
+      _props$isOpen = props.isOpen,
+      isOpen = _props$isOpen === void 0 ? false : _props$isOpen; // init isOpenState
+
+  var _useState = (0, _react.useState)(isOpen),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpenState = _useState2[0],
+      closeModal = _useState2[1];
+
+  var handleCloseModal = function handleCloseModal() {
+    closeModal(false);
+  };
+
+  var handleEsc = function handleEsc(event) {
+    // close modal press key Esc
+    if (typeof document.activeElement.value === 'undefined' && event.keyCode === 27) {
+      handleCloseModal();
+    }
+  };
+
+  (0, _react.useEffect)(function () {
+    if (isOpenState) {
+      document.addEventListener('keydown', handleEsc);
+    }
+  });
+  if (!isOpenState) return false;
+  return _react.default.createElement("div", {
+    className: "modal-backdrop ".concat(className)
+  }, _react.default.createElement("div", {
+    className: "modal",
+    style: {
+      width: width
+    }
+  }, _react.default.createElement("button", {
+    onClick: handleCloseModal
+  }, "close"), "modal"));
+}
+
+var _default = Modal;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./modal.scss":"src/components/modules/modal/modal.scss"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37442,11 +37513,13 @@ var _reactRouterDom = require("react-router-dom");
 
 var _icons = _interopRequireDefault(require("../../modules/icons/icons.jsx"));
 
+var _modal = _interopRequireDefault(require("../../modules/modal/modal.jsx"));
+
 require("./index.screen.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function IndexScreen() {
+var IndexScreen = function IndexScreen() {
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "IndexScreen"), _react.default.createElement(_icons.default, {
     glyph: "cancel",
     width: 40,
@@ -37461,12 +37534,14 @@ function IndexScreen() {
     className: "icon-close"
   }), _react.default.createElement(_reactRouterDom.Link, {
     to: "/artists"
-  }, "artists"));
-}
+  }, "artists"), _react.default.createElement(_modal.default, {
+    isOpen: true
+  }));
+};
 
 var _default = IndexScreen;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","../../modules/modal/modal.jsx":"src/components/modules/modal/modal.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37736,7 +37811,34 @@ var mapDispatchToProps = {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ArtistScreen);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/scss/style.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/components/modules/aside/aside.block.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/aside/aside.block.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./aside.block.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function Aside(props) {
+  return _react.default.createElement("aside", {
+    id: "aside"
+  }, "aside");
+}
+
+var _default = Aside;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./aside.block.scss":"src/components/modules/aside/aside.block.scss"}],"src/scss/style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37760,6 +37862,8 @@ var _artistsScreen = _interopRequireDefault(require("./components/pages/artists/
 
 var _artistScreen = _interopRequireDefault(require("./components/pages/artists/artist.screen.jsx"));
 
+var _asideBlock = _interopRequireDefault(require("./components/modules/aside/aside.block.jsx"));
+
 require("./scss/style.scss");
 
 var _cancel = _interopRequireDefault(require("./svg/assets/cancel.svg"));
@@ -37773,7 +37877,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var App = function App() {
   return React.createElement(_reactRedux.Provider, {
     store: _store.default
-  }, React.createElement(_reactRouterDom.BrowserRouter, null, React.createElement(React.Fragment, null, React.createElement(_reactRouterDom.Route, {
+  }, React.createElement(_reactRouterDom.BrowserRouter, null, React.createElement("main", {
+    id: "main"
+  }, React.createElement(_asideBlock.default, null), React.createElement("header", {
+    id: "header"
+  }), React.createElement("section", {
+    id: "routes-section"
+  }, React.createElement(React.Fragment, null, React.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
     component: _indexScreen.default
@@ -37785,6 +37895,8 @@ var App = function App() {
     exact: true,
     path: "/artists/:unique",
     component: _artistScreen.default
+  }))), React.createElement("footer", {
+    id: "footer"
   }))));
 };
 
@@ -37793,7 +37905,7 @@ var rootNode = document.getElementById('js--root');
 if (rootNode) {
   ReactDOM.render(React.createElement(App, null), rootNode);
 }
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./components/modules/aside/aside.block.jsx":"src/components/modules/aside/aside.block.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37821,7 +37933,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56772" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49490" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
