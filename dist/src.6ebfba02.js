@@ -37296,54 +37296,7 @@ exports.default = _default;
 module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
 },{}],"src/svg/assets/arrow-point-to-right.svg":[function(require,module,exports) {
 module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
-},{}],"src/components/modules/icons/icons.jsx":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
-
-var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var glyphs = {
-  cancel: _cancel.default,
-  arrowRight: _arrowPointToRight.default
-};
-
-function Icon(props) {
-  var _props$className = props.className,
-      className = _props$className === void 0 ? '' : _props$className,
-      glyph = props.glyph,
-      width = props.width,
-      height = props.height,
-      white = props.white,
-      blue = props.blue,
-      red = props.red,
-      green = props.green;
-  var computedClassName = "icon ".concat(className);
-  if (white) computedClassName += ' icon--white';
-  if (blue) computedClassName += ' icon--blue';
-  if (red) computedClassName += ' icon--red';
-  if (green) computedClassName += ' icon--green';
-  return _react.default.createElement("svg", {
-    className: computedClassName,
-    width: width,
-    height: height
-  }, _react.default.createElement("use", {
-    xlinkHref: glyphs[glyph]
-  }));
-}
-
-var _default = Icon;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -37410,7 +37363,67 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/components/modules/icons/icons.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/icons/icons.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
+
+var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
+
+require("./icons.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var glyphs = {
+  cancel: _cancel.default,
+  arrowRight: _arrowPointToRight.default
+};
+
+function Icon(props) {
+  var glyph = props.glyph,
+      _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      _props$width = props.width,
+      width = _props$width === void 0 ? 24 : _props$width,
+      _props$height = props.height,
+      height = _props$height === void 0 ? 24 : _props$height,
+      _props$white = props.white,
+      white = _props$white === void 0 ? false : _props$white,
+      _props$blue = props.blue,
+      blue = _props$blue === void 0 ? false : _props$blue,
+      _props$red = props.red,
+      red = _props$red === void 0 ? false : _props$red,
+      _props$green = props.green,
+      green = _props$green === void 0 ? false : _props$green;
+  var computedClassName = "icon ".concat(className);
+  if (white) computedClassName += ' icon--white';
+  if (blue) computedClassName += ' icon--blue';
+  if (red) computedClassName += ' icon--red';
+  if (green) computedClassName += ' icon--green';
+  return _react.default.createElement("svg", {
+    className: computedClassName,
+    width: width,
+    height: height
+  }, _react.default.createElement("use", {
+    xlinkHref: glyphs[glyph]
+  }));
+}
+
+var _default = Icon;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/pages/index/index.screen.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37498,7 +37511,7 @@ function fetchPosts() {
 var getArtists = function getArtists() {
   return function (dispatch) {
     dispatch({
-      type: "GET_ARTISTS_START"
+      type: 'GET_ARTISTS_START'
     });
     return fetchPosts().then(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
@@ -37512,7 +37525,7 @@ var getArtists = function getArtists() {
         });
       } else {
         dispatch({
-          type: "GET_ARTISTS_ERROR",
+          type: 'GET_ARTISTS_ERROR',
           payload: []
         });
       }
@@ -37536,7 +37549,7 @@ function fetchPost(unique) {
 var getArtist = function getArtist(unique) {
   return function (dispatch) {
     dispatch({
-      type: "GET_ARTIST_START"
+      type: 'GET_ARTIST_START'
     });
     return fetchPost(unique).then(function (_ref3) {
       var _ref4 = _slicedToArray(_ref3, 2),
@@ -37550,7 +37563,7 @@ var getArtist = function getArtist(unique) {
         });
       } else {
         dispatch({
-          type: "GET_ARTIST_ERROR",
+          type: 'GET_ARTIST_ERROR',
           payload: []
         });
       }
@@ -37753,8 +37766,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-console.log('cancel', _cancel.default);
-
 var App = function App() {
   return React.createElement(_reactRedux.Provider, {
     store: _store.default
@@ -37773,9 +37784,11 @@ var App = function App() {
   }))));
 };
 
-console.log('test');
-var rootNode = document.getElementById("js--root");
-ReactDOM.render(React.createElement(App, null), rootNode);
+var rootNode = document.getElementById('js--root');
+
+if (rootNode) {
+  ReactDOM.render(React.createElement(App, null), rootNode);
+}
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -37804,7 +37817,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60603" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56772" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
