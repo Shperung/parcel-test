@@ -3,11 +3,17 @@ import React from 'react';
 
 import cancel from '../../../svg/assets/cancel.svg';
 import arrowRight from '../../../svg/assets/arrow-point-to-right.svg';
+import user from '../../../svg/assets/user.svg';
+import wind from '../../../svg/assets/wind.svg';
+import check from '../../../svg/assets/check.svg';
 import './icons.scss';
 
 const glyphs = {
   cancel,
-  arrowRight
+  arrowRight,
+  user,
+  wind,
+  check
 };
 
 type Props = {

@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -51,6 +52,7 @@ body {
   overflow-x: hidden;
   font-family: 'Roboto-Regular', $fontDefault;
   color: $textDark;
+  font-size: 13px;
   background: linear-gradient(to right, rgba(254, 254, 254, 1) 0%, rgba(230, 244, 253, 1) 100%);
 }
 
@@ -58,6 +60,11 @@ hr {
   box-sizing: content-box;
   height: 1px;
   overflow: visible;
+}
+
+var {
+  font-style: normal;
+  display: block;
 }
 
 a {
@@ -143,4 +150,18 @@ textarea {
 
 figure {
   margin: 0;
+}
+
+.h1 {
+  font-family: 'Roboto-Bold';
+  letter-spacing: 0.05em;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.h2 {
+  font-family: 'Roboto-Bold';
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  margin-bottom: 16px;
 }

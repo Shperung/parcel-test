@@ -37296,6 +37296,12 @@ exports.default = _default;
 module.exports = '#4a945dd616d79ceadcb144e5cd488c5e';
 },{}],"src/svg/assets/arrow-point-to-right.svg":[function(require,module,exports) {
 module.exports = '#a0e061b54507c1ea6361ee20ac930f2c';
+},{}],"src/svg/assets/user.svg":[function(require,module,exports) {
+module.exports = '#799bd441d97106427a6b6c1c7fd01d41';
+},{}],"src/svg/assets/wind.svg":[function(require,module,exports) {
+module.exports = '#3eb832b6cf3cb537631b34e2279673b8';
+},{}],"src/svg/assets/check.svg":[function(require,module,exports) {
+module.exports = '#523b12d1ad7097e01ebd1061205fd67d';
 },{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -37382,13 +37388,22 @@ var _cancel = _interopRequireDefault(require("../../../svg/assets/cancel.svg"));
 
 var _arrowPointToRight = _interopRequireDefault(require("../../../svg/assets/arrow-point-to-right.svg"));
 
+var _user = _interopRequireDefault(require("../../../svg/assets/user.svg"));
+
+var _wind = _interopRequireDefault(require("../../../svg/assets/wind.svg"));
+
+var _check = _interopRequireDefault(require("../../../svg/assets/check.svg"));
+
 require("./icons.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var glyphs = {
   cancel: _cancel.default,
-  arrowRight: _arrowPointToRight.default
+  arrowRight: _arrowPointToRight.default,
+  user: _user.default,
+  wind: _wind.default,
+  check: _check.default
 };
 
 function Icon(props) {
@@ -37423,7 +37438,7 @@ function Icon(props) {
 
 var _default = Icon;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","../../../svg/assets/user.svg":"src/svg/assets/user.svg","../../../svg/assets/wind.svg":"src/svg/assets/wind.svg","../../../svg/assets/check.svg":"src/svg/assets/check.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37520,7 +37535,11 @@ require("./index.screen.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var IndexScreen = function IndexScreen() {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "IndexScreen"), _react.default.createElement(_icons.default, {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+    className: "h1"
+  }, "IndexScreen"), _react.default.createElement("h1", {
+    className: "h2"
+  }, "Inputs"), _react.default.createElement(_icons.default, {
     glyph: "cancel",
     width: 40,
     height: 40,
@@ -37809,7 +37828,36 @@ var mapDispatchToProps = {
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ArtistScreen);
 
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/components/modules/aside/aside.block.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","../../../actions/artists.astion.js":"src/actions/artists.astion.js"}],"src/components/modules/footer/footer.block.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/footer/footer.block.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./footer.block.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+var year = new Date().getFullYear();
+
+function Footer(props) {
+  return _react.default.createElement("footer", {
+    id: "footer"
+  }, _react.default.createElement("small", null, "\xA9 Project ", year));
+}
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./footer.block.scss":"src/components/modules/footer/footer.block.scss"}],"src/components/modules/aside/aside.block.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37824,19 +37872,144 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _footerBlock = _interopRequireDefault(require("../footer/footer.block.jsx"));
+
+var _icons = _interopRequireDefault(require("../icons/icons.jsx"));
+
 require("./aside.block.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function Aside(props) {
   return _react.default.createElement("aside", {
     id: "aside"
-  }, "aside");
+  }, _react.default.createElement("a", {
+    href: "/",
+    className: "aside-logo"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "wind",
+    width: 180,
+    height: 80,
+    white: true
+  })), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link first")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link second")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 28,
+    height: 28,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement(_footerBlock.default, null));
 }
 
 var _default = Aside;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./aside.block.scss":"src/components/modules/aside/aside.block.scss"}],"src/scss/style.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../footer/footer.block.jsx":"src/components/modules/footer/footer.block.jsx","../icons/icons.jsx":"src/components/modules/icons/icons.jsx","./aside.block.scss":"src/components/modules/aside/aside.block.scss"}],"src/components/modules/header/header.block.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/header/header.block.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _icons = _interopRequireDefault(require("../../modules/icons/icons.jsx"));
+
+require("./header.block.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function Header(props) {
+  return _react.default.createElement("header", {
+    id: "header"
+  }, _react.default.createElement("span", {
+    className: "header-uppercase"
+  }, "Dashboard"), _react.default.createElement("div", {
+    className: "header-auth"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "user",
+    width: 20,
+    height: 20
+  }), _react.default.createElement("span", null, "admin")));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","./header.block.scss":"src/components/modules/header/header.block.scss"}],"src/scss/style.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37862,6 +38035,8 @@ var _artistScreen = _interopRequireDefault(require("./components/pages/artists/a
 
 var _asideBlock = _interopRequireDefault(require("./components/modules/aside/aside.block.jsx"));
 
+var _headerBlock = _interopRequireDefault(require("./components/modules/header/header.block.jsx"));
+
 require("./scss/style.scss");
 
 var _cancel = _interopRequireDefault(require("./svg/assets/cancel.svg"));
@@ -37877,10 +38052,8 @@ var App = function App() {
     store: _store.default
   }, React.createElement(_reactRouterDom.BrowserRouter, null, React.createElement("main", {
     id: "main"
-  }, React.createElement(_asideBlock.default, null), React.createElement("header", {
-    id: "header"
-  }), React.createElement("section", {
-    id: "routes-section"
+  }, React.createElement(_asideBlock.default, null), React.createElement(_headerBlock.default, null), React.createElement("section", {
+    id: "section"
   }, React.createElement(React.Fragment, null, React.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
@@ -37893,9 +38066,7 @@ var App = function App() {
     exact: true,
     path: "/artists/:unique",
     component: _artistScreen.default
-  }))), React.createElement("footer", {
-    id: "footer"
-  }))));
+  }))))));
 };
 
 var rootNode = document.getElementById('js--root');
@@ -37903,7 +38074,7 @@ var rootNode = document.getElementById('js--root');
 if (rootNode) {
   ReactDOM.render(React.createElement(App, null), rootNode);
 }
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./components/modules/aside/aside.block.jsx":"src/components/modules/aside/aside.block.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"node_modules/react-redux/es/index.js","./store.js":"src/store.js","./components/pages/index/index.screen.jsx":"src/components/pages/index/index.screen.jsx","./components/pages/artists/artists.screen.jsx":"src/components/pages/artists/artists.screen.jsx","./components/pages/artists/artist.screen.jsx":"src/components/pages/artists/artist.screen.jsx","./components/modules/aside/aside.block.jsx":"src/components/modules/aside/aside.block.jsx","./components/modules/header/header.block.jsx":"src/components/modules/header/header.block.jsx","./scss/style.scss":"src/scss/style.scss","./svg/assets/cancel.svg":"src/svg/assets/cancel.svg","./svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -37931,7 +38102,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49538" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58594" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

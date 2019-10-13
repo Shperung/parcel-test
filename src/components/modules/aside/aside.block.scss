@@ -1,3 +1,28 @@
+@import '../../../scss/var.scss';
+
 #aside {
-  background-color: green;
+  grid-area: aside;
+  position: relative;
+  background-image: $greenBlueDiagonalGradient;
+  overflow-y: auto;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.aside-link {
+  padding: 0 16px;
+  margin-bottom: 32px;
+  font-size: 16px;
+  text-decoration: none;
+
+  svg {
+    margin-right: 8px;
+  }
+}
+
+.aside-logo {
+  margin-top: 8px;
+  margin-bottom: 16px;
 }

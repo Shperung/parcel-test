@@ -10,7 +10,8 @@ import './index.screen.scss';
 const IndexScreen = () => {
   return (
     <div>
-      <h1>IndexScreen</h1>
+      <h1 className="h1">IndexScreen</h1>
+      <h1 className="h2">Inputs</h1>
       <Icon glyph="cancel" width={40} height={40} green className="icon-close" />
       <Icon glyph="arrowRight" width={40} height={40} blue className="icon-close" />
       <Link to="/artists">artists</Link>
