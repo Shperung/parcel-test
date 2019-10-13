@@ -4,15 +4,16 @@ import React, { useState, useEffect } from 'react';
 import './form.scss';
 
 type Props = {
-  placeholder?: string
+  placeholder?: string,
+  id: string
 };
 
 function Input(props: Props) {
-  const { placeholder = '' } = props;
+  const { placeholder = '', id } = props;
   return (
-    <div className="input-wrap">
-      <input placeholder={placeholder} />
-    </div>
+    <label htmlFor={id} className="input-wrap">
+      <input id={id} placeholder={placeholder} />
+    </label>
   );
 }
 

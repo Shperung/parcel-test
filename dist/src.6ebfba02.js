@@ -37459,15 +37459,55 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function Input(props) {
   var _props$placeholder = props.placeholder,
-      placeholder = _props$placeholder === void 0 ? '' : _props$placeholder;
-  return _react.default.createElement("div", {
+      placeholder = _props$placeholder === void 0 ? '' : _props$placeholder,
+      id = props.id;
+  return _react.default.createElement("label", {
+    htmlFor: id,
     className: "input-wrap"
   }, _react.default.createElement("input", {
+    id: id,
     placeholder: placeholder
   }));
 }
 
 var _default = Input;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./form.scss":"src/components/modules/form/form.scss"}],"src/components/modules/form/checkbox.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./form.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function Checkbox(props) {
+  var _props$label = props.label,
+      label = _props$label === void 0 ? '' : _props$label,
+      id = props.id,
+      className = props.className,
+      checked = props.checked;
+  return _react.default.createElement("label", {
+    htmlFor: id,
+    className: "checkbox-input-label ".concat(className)
+  }, _react.default.createElement("div", null, _react.default.createElement("input", {
+    type: "checkbox",
+    id: id,
+    className: "checkbox-input",
+    checked: checked
+  }), _react.default.createElement("div", {
+    className: "checkbox-box"
+  })), _react.default.createElement("div", {
+    className: "checkbox-input-label-text"
+  }, label));
+}
+
+var _default = Checkbox;
 exports.default = _default;
 },{"react":"node_modules/react/index.js","./form.scss":"src/components/modules/form/form.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -37561,6 +37601,8 @@ var _icons = _interopRequireDefault(require("../../modules/icons/icons.jsx"));
 
 var _input = _interopRequireDefault(require("../../modules/form/input.jsx"));
 
+var _checkbox = _interopRequireDefault(require("../../modules/form/checkbox.jsx"));
+
 var _modal = _interopRequireDefault(require("../../modules/modal/modal.jsx"));
 
 require("./index.screen.scss");
@@ -37570,7 +37612,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var IndexScreen = function IndexScreen() {
   return _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: "h1"
-  }, "IndexScreen"), _react.default.createElement("h1", {
+  }, "IndexScreen"), _react.default.createElement("br", null), _react.default.createElement("h1", {
     className: "h2"
   }, "Inputs"), _react.default.createElement("div", {
     className: "inputs"
@@ -37580,12 +37622,35 @@ var IndexScreen = function IndexScreen() {
     placeholder: "Female"
   }), _react.default.createElement(_input.default, {
     placeholder: "Email"
+  })), _react.default.createElement("br", null), _react.default.createElement("h1", {
+    className: "h2"
+  }, "Checkboxes"), _react.default.createElement("div", {
+    className: "inputs"
+  }, _react.default.createElement(_checkbox.default, {
+    checked: true,
+    label: "Checkbox 1"
+  }), _react.default.createElement(_checkbox.default, {
+    checked: true,
+    label: "Checkbox 2"
+  }), _react.default.createElement(_checkbox.default, {
+    checked: true,
+    label: "Checkbox 3"
+  }), _react.default.createElement(_checkbox.default, {
+    checked: true,
+    label: "Checkbox 4"
+  }), _react.default.createElement(_checkbox.default, {
+    checked: true,
+    label: "Checkbox 5"
+  }), _react.default.createElement(_checkbox.default, {
+    label: "Checkbox 6"
+  }), _react.default.createElement(_checkbox.default, {
+    label: "Checkbox 7"
   })));
 };
 
 var _default = IndexScreen;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","../../modules/form/input.jsx":"src/components/modules/form/input.jsx","../../modules/modal/modal.jsx":"src/components/modules/modal/modal.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","../../modules/form/input.jsx":"src/components/modules/form/input.jsx","../../modules/form/checkbox.jsx":"src/components/modules/form/checkbox.jsx","../../modules/modal/modal.jsx":"src/components/modules/modal/modal.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
