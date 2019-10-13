@@ -37438,7 +37438,38 @@ function Icon(props) {
 
 var _default = Icon;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","../../../svg/assets/user.svg":"src/svg/assets/user.svg","../../../svg/assets/wind.svg":"src/svg/assets/wind.svg","../../../svg/assets/check.svg":"src/svg/assets/check.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../../svg/assets/cancel.svg":"src/svg/assets/cancel.svg","../../../svg/assets/arrow-point-to-right.svg":"src/svg/assets/arrow-point-to-right.svg","../../../svg/assets/user.svg":"src/svg/assets/user.svg","../../../svg/assets/wind.svg":"src/svg/assets/wind.svg","../../../svg/assets/check.svg":"src/svg/assets/check.svg","./icons.scss":"src/components/modules/icons/icons.scss"}],"src/components/modules/form/form.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/modules/form/input.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./form.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function Input(props) {
+  var _props$placeholder = props.placeholder,
+      placeholder = _props$placeholder === void 0 ? '' : _props$placeholder;
+  return _react.default.createElement("div", {
+    className: "input-wrap"
+  }, _react.default.createElement("input", {
+    placeholder: placeholder
+  }));
+}
+
+var _default = Input;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./form.scss":"src/components/modules/form/form.scss"}],"src/components/modules/modal/modal.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37528,6 +37559,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _icons = _interopRequireDefault(require("../../modules/icons/icons.jsx"));
 
+var _input = _interopRequireDefault(require("../../modules/form/input.jsx"));
+
 var _modal = _interopRequireDefault(require("../../modules/modal/modal.jsx"));
 
 require("./index.screen.scss");
@@ -37539,26 +37572,20 @@ var IndexScreen = function IndexScreen() {
     className: "h1"
   }, "IndexScreen"), _react.default.createElement("h1", {
     className: "h2"
-  }, "Inputs"), _react.default.createElement(_icons.default, {
-    glyph: "cancel",
-    width: 40,
-    height: 40,
-    green: true,
-    className: "icon-close"
-  }), _react.default.createElement(_icons.default, {
-    glyph: "arrowRight",
-    width: 40,
-    height: 40,
-    blue: true,
-    className: "icon-close"
-  }), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/artists"
-  }, "artists"));
+  }, "Inputs"), _react.default.createElement("div", {
+    className: "inputs"
+  }, _react.default.createElement(_input.default, {
+    placeholder: "Name"
+  }), _react.default.createElement(_input.default, {
+    placeholder: "Female"
+  }), _react.default.createElement(_input.default, {
+    placeholder: "Email"
+  })));
 };
 
 var _default = IndexScreen;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","../../modules/modal/modal.jsx":"src/components/modules/modal/modal.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../../modules/icons/icons.jsx":"src/components/modules/icons/icons.jsx","../../modules/form/input.jsx":"src/components/modules/form/input.jsx","../../modules/modal/modal.jsx":"src/components/modules/modal/modal.jsx","./index.screen.scss":"src/components/pages/index/index.screen.scss"}],"src/config.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37898,72 +37925,72 @@ function Aside(props) {
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link first")), _react.default.createElement("a", {
     href: "/",
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link second")), _react.default.createElement("a", {
     href: "/",
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
-    white: true
-  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
-    href: "/",
-    className: "aside-link"
-  }, _react.default.createElement(_icons.default, {
-    glyph: "check",
-    width: 28,
-    height: 28,
-    white: true
-  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
-    href: "/",
-    className: "aside-link"
-  }, _react.default.createElement(_icons.default, {
-    glyph: "check",
-    width: 28,
-    height: 28,
-    white: true
-  }), _react.default.createElement("span", null, "Link nextnext")), _react.default.createElement("a", {
-    href: "/",
-    className: "aside-link"
-  }, _react.default.createElement(_icons.default, {
-    glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
     href: "/",
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
     href: "/",
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
     href: "/",
     className: "aside-link"
   }, _react.default.createElement(_icons.default, {
     glyph: "check",
-    width: 28,
-    height: 28,
+    width: 20,
+    height: 20,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 20,
+    height: 20,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 20,
+    height: 20,
+    white: true
+  }), _react.default.createElement("span", null, "Link next")), _react.default.createElement("a", {
+    href: "/",
+    className: "aside-link"
+  }, _react.default.createElement(_icons.default, {
+    glyph: "check",
+    width: 20,
+    height: 20,
     white: true
   }), _react.default.createElement("span", null, "Link next")), _react.default.createElement(_footerBlock.default, null));
 }

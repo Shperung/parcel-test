@@ -15,39 +15,39 @@ function Aside(props: Props) {
         <Icon glyph="wind" width={180} height={80} white />
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link first</span>
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link second</span>
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
-        <span>Link nextnext</span>
-      </a>
-      <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
-        <span>Link nextnext</span>
-      </a>
-      <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
-        <span>Link nextnext</span>
-      </a>
-      <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link next</span>
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link next</span>
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link next</span>
       </a>
       <a href="/" className="aside-link">
-        <Icon glyph="check" width={28} height={28} white />
+        <Icon glyph="check" width={20} height={20} white />
+        <span>Link next</span>
+      </a>
+      <a href="/" className="aside-link">
+        <Icon glyph="check" width={20} height={20} white />
+        <span>Link next</span>
+      </a>
+      <a href="/" className="aside-link">
+        <Icon glyph="check" width={20} height={20} white />
+        <span>Link next</span>
+      </a>
+      <a href="/" className="aside-link">
+        <Icon glyph="check" width={20} height={20} white />
         <span>Link next</span>
       </a>
 
